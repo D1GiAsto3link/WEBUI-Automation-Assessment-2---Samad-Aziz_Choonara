@@ -7,4 +7,6 @@
             <class name="org.WebUI.Tests.CheckoutTest"/>
         </classes>
     </test>
+
+
 </suite>
