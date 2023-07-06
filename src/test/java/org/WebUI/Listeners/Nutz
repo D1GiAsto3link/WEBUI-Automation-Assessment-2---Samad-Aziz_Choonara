@@ -1,0 +1,5 @@
+In a nutshell,
+
+The ExtentHtmlReporter class is used for creating the HTML reports.
+The ExtentReports class is used for creating the tests.
+The ExtentTest class is used for generating the logs in the Extent Report.
