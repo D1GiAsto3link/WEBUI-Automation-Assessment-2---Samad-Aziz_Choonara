@@ -11,7 +11,7 @@ import org.testng.annotations.Parameters;
 import java.io.IOException;
 
 public class BaseTest extends BasePage {
-    private static ThreadLocal<WebDriver> driverThreadLocal = new ThreadLocal<>();
+    private static final ThreadLocal<WebDriver> driverThreadLocal = new ThreadLocal<>();
 
     protected WebDriver getDriver() {
         return driverThreadLocal.get();
