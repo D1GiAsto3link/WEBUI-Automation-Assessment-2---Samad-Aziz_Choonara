@@ -18,7 +18,8 @@ import java.io.IOException;
 public class BaseTest extends BasePage {
     private static final ThreadLocal<WebDriver> driverThreadLocal = new ThreadLocal<>();
     private ExcelUtils readTestData;
-
+WebDriverManager driverManager;
+WebDriver driver;
     protected WebDriver getDriver() {
         return driverThreadLocal.get();
     }

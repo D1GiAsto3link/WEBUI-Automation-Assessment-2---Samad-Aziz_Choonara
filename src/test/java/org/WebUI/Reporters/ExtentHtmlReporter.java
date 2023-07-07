@@ -5,7 +5,8 @@ public class ExtentHtmlReporter {
 
 
     public ExtentHtmlReporter(String s) {
-this.htmlreporter();
+
+        this.htmlreporter();
     }
 
     public void htmlreporter(){
