@@ -5,8 +5,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class HomePage extends BasePage {
-    private By searchField = By.id("search");
-    private By searchButton = By.cssSelector(".action.search");
+    private final By searchField = By.id("search");
+    private final By searchButton = By.cssSelector(".action.search");
 
     public HomePage(WebDriver driver) {
         super(driver);

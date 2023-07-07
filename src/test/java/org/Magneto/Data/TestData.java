@@ -2,10 +2,10 @@ package org.Magneto.Data;
 
 public class TestData {
 
-    private String productName;
-    private String firstName;
-    private String lastName;
-    private String email;
+    private final String productName;
+    private final String firstName;
+    private final String lastName;
+    private final String email;
 
     public TestData(String productName, String firstName, String lastName, String email) {
         this.productName = productName;

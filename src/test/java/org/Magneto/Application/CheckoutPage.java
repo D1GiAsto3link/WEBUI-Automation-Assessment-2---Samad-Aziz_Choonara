@@ -5,10 +5,10 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 
 public class CheckoutPage extends BasePage {
-    private By firstNameField = By.id("firstname");
-    private By lastNameField = By.id("lastname");
-    private By emailField = By.id("email");
-    private By placeOrderButton = By.cssSelector(".action.primary.checkout");
+    private final By firstNameField = By.id("firstname");
+    private final By lastNameField = By.id("lastname");
+    private final By emailField = By.id("email");
+    private final By placeOrderButton = By.cssSelector(".action.primary.checkout");
 
     public CheckoutPage(WebDriver driver) {
         super(driver);
