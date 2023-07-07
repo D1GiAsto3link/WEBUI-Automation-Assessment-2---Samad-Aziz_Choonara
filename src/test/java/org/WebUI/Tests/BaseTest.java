@@ -1,9 +1,13 @@
 package org.WebUI.Tests;
 
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.Magneto.Application.BasePage;
+import org.Magneto.utils.ExcelUtils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
+import org.openqa.selenium.edge.EdgeOptions;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeMethod;
 import org.testng.annotations.Parameters;
@@ -12,6 +16,7 @@ import java.io.IOException;
 
 public class BaseTest extends BasePage {
     private static final ThreadLocal<WebDriver> driverThreadLocal = new ThreadLocal<>();
+    private ExcelUtils readTestData;
 
     protected WebDriver getDriver() {
         return driverThreadLocal.get();
@@ -19,20 +24,26 @@ public class BaseTest extends BasePage {
 
     @BeforeMethod
     @Parameters({"browser"})
-    public void setup(String browser) {
-        WebDriver driver;
+    public void setup(String browser) throws IOException {
         if (browser.equalsIgnoreCase("chrome")) {
-            System.setProperty("webdriver.chrome.driver", "path/to/chromedriver");
-            driver = new ChromeDriver();
-        } else if (browser.equalsIgnoreCase("edge")) {
-            System.setProperty("webdriver.edge.driver", "path/to/msedgedriver");
-            driver = new EdgeDriver();
-        } else {
-            throw new IllegalArgumentException("Invalid browser name provided: " + browser);
-        }
+            ChromeOptions options = new ChromeOptions();
+            options.addArguments("--remote-allow-origins=*");
+            WebDriverManager.chromedriver().setup();
+            driver = new ChromeDriver(options);
 
-        driverThreadLocal.set(driver);
+        } else if (browser.equalsIgnoreCase("edge")) {
+            WebDriverManager.edgedriver().setup();
+            EdgeOptions options = new EdgeOptions();
+            driver = new EdgeDriver(options);
+
+        } else {
+            throw new IllegalArgumentException("Invalid browser name: " + browser);
+        }
         driver.manage().window().maximize();
+        driver.get("https://magento.softwaretestingboard.com ");
+
+        readTestData = new ExcelUtils();
+        ExcelUtils.readTestData();
     }
 
     @AfterMethod
