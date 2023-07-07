@@ -2,6 +2,7 @@ package org.WebUI.Tests;
 
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.Magneto.Application.BasePage;
+import org.Magneto.Data.TestData;
 import org.Magneto.utils.ExcelUtils;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -56,6 +57,6 @@ public class BaseTest extends BasePage {
     }
 
     protected Object[][] getTestData(String sheetName) throws IOException {
-        return ExcelUtils.getTestData(sheetName);
+        return ExcelUtils.readTestData(Luna_Test_cases_1);
     }
 }
